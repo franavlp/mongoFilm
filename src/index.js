@@ -1,4 +1,8 @@
-const express = require('express');
+import { config } from 'dotenv';
+config()
+import { executeStudentCrudOperations } from './bd/index.js';
+executeStudentCrudOperations();
+import express from 'express';
 const app = express();
 
 app.get('/', (req, res) => {
