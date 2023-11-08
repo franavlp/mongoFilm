@@ -1,19 +1,23 @@
 import { connectToCluster } from './../bd/index.js';
 
-async function id(req, res) {
-    let id = req.params.id;
-    let mongoClient;
-    let find = "";
-    try {
-        mongoClient = await connectToCluster();
-        const db = mongoClient.db('Peliculas');
-        const collection = db.collection('Peliculas');
-        find = collection.find({id: {$eq: id}}).toArray()
-    } finally {
-        await mongoClient.close();
-    }
-    res.send(find)
-}
+// async function id(req, res) {
+//     let id = req.params.id;
+//     let mongoClient;
+//     let find = "";
+//     try {
+//         mongoClient = await connectToCluster();
+//         // console.log(mongoClient)
+//         const db = mongoClient.db('Peliculas');
+//         // console.log(db);
+//         const collection = db.collection('Peliculas');
+//         // console.log(collection);
+//         find =  await collection.find({'id': id}).toArray()
+//         console.log("hola", find);
+//     } finally {
+//         // await mongoClient.close();
+//     }
+//     res.send(find)
+// }
 async function name(req, res) {
     let id = req.params.id;
     let mongoClient;
@@ -22,9 +26,8 @@ async function name(req, res) {
         mongoClient = await connectToCluster();
         const db = mongoClient.db('Peliculas');
         const collection = db.collection('Peliculas');
-        find = collection.find({name: {$eq: id}}).toArray()
+        find = collection.find({name: id}).toArray()
     } finally {
-        await mongoClient.close();
     }
     res.send(find)
 }
@@ -37,7 +40,7 @@ async function director(req, res) {
         mongoClient = await connectToCluster();
         const db = mongoClient.db('Peliculas');
         const collection = db.collection('Peliculas');
-        find = collection.find({director: {$eq: id}}).toArray()
+        find = collection.find({director: id}).toArray()
     } finally {
         await mongoClient.close();
     }
@@ -52,9 +55,8 @@ async function gender(req, res) {
         mongoClient = await connectToCluster();
         const db = mongoClient.db('Peliculas');
         const collection = db.collection('Peliculas');
-        find = collection.find({gender: {$eq: id}}).toArray()
+        find = collection.find({gender: id}).toArray()
     } finally {
-        await mongoClient.close();
     }
     res.send(find)
 }
@@ -66,9 +68,8 @@ async function releasedate(req, res) {
         mongoClient = await connectToCluster();
         const db = mongoClient.db('Peliculas');
         const collection = db.collection('Peliculas');
-        find = collection.find({release_date: {$eq: id}}).toArray()
+        find = collection.find({release_date: id}).toArray()
     } finally {
-        await mongoClient.close();
     }
     res.send(find)
 }
@@ -80,10 +81,9 @@ async function duration(req, res) {
         mongoClient = await connectToCluster();
         const db = mongoClient.db('Peliculas');
         const collection = db.collection('Peliculas');
-        find = collection.find({duration: {$eq: id}}).toArray()
+        find = collection.find({duration: id}).toArray()
     } finally {
-        await mongoClient.close();
     }
     res.send(find)
 }
-export { id, name, director, gender, releasedate, duration }
+export { name, director, gender, releasedate, duration }
