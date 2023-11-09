@@ -3,10 +3,10 @@ import { Router } from 'express';
 
 let router = Router();
 
-router.get('/api/name/:id', name);
-router.get('/api/director/:id', director);
-router.get('/api/gender/:id', gender);
-router.get('/api/release_date/:id', releasedate);
-router.get('/api/duration/:id', duration);
+router.post('/api/name', name);
+router.post('/api/director', director);
+router.post('/api/gender', gender);
+router.post('/api/releasedate', releasedate);
+router.post('/api/duration', duration);
 
 export default router;
